@@ -11,23 +11,25 @@ interface StudentData {
   date_of_birth: string;
   gender: string;
   grade_applying_for: number;
-  parents?: {
+  parents?: Array<{
     father_name: string | null;
     mother_name: string | null;
     phone: string;
     email: string;
     address: string | null;
-  } | null;
+  }> | null;
 }
 
-export default function SuccessPage() {
+export default function SuccessContent() {
   const searchParams = useSearchParams();
   const studentId = searchParams.get("id");
   const [student, setStudent] = useState<StudentData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!studentId) {
+      setError("No student ID provided.");
       setLoading(false);
       return;
     }
@@ -48,7 +50,9 @@ export default function SuccessPage() {
         .eq("id", studentId)
         .single();
 
-      if (!error && data) {
+      if (error) {
+        setError(error.message);
+      } else {
         setStudent(data);
       }
       setLoading(false);
@@ -57,27 +61,42 @@ export default function SuccessPage() {
     fetchData();
   }, [studentId]);
 
-  const handlePrint = () => {
-    window.print();
-  };
-
   if (loading) {
     return (
       <div className="min-h-screen bg-[#F7F9FC] flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#af2b3e] mx-auto"></div>
-          <p className="mt-4 text-[#44474e]">Loading your registration...</p>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#af2b3e]"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-[#F7F9FC] flex items-center justify-center p-4">
+        <div className="bg-white rounded-xl shadow-xl p-8 text-center max-w-md">
+          <span className="material-symbols-outlined text-6xl text-red-500 mb-4">
+            error
+          </span>
+          <h2 className="font-headline text-2xl font-bold text-[#031634]">
+            Error
+          </h2>
+          <p className="text-[#44474e] mt-2">{error}</p>
+          <Link
+            href="/register"
+            className="inline-block mt-6 px-6 py-3 bg-[#031634] text-white rounded-lg hover:bg-[#1a2b4a] transition"
+          >
+            Try Again
+          </Link>
         </div>
       </div>
     );
   }
 
-  if (!student || !studentId) {
+  if (!student) {
     return (
       <div className="min-h-screen bg-[#F7F9FC] flex items-center justify-center">
         <div className="bg-white rounded-xl shadow-xl p-8 text-center max-w-md">
           <span className="material-symbols-outlined text-6xl text-[#af2b3e] mb-4">
-            error
+            info
           </span>
           <h2 className="font-headline text-2xl font-bold text-[#031634]">
             No Registration Found
@@ -98,13 +117,14 @@ export default function SuccessPage() {
 
   // Format date of birth
   const formattedDob = new Date(student.date_of_birth).toLocaleDateString();
-
-  // Generate a simple student ID (you can use the UUID or a formatted one)
   const shortId = student.id.slice(0, 8).toUpperCase();
+  const parent = student.parents?.[0] || null;
+
+  const handlePrint = () => window.print();
 
   return (
     <div className="min-h-screen bg-[#F7F9FC] font-body">
-      {/* Fixed TopAppBar (same as landing page) */}
+      {/* Same header as before */}
       <header className="bg-slate-50/80 backdrop-blur-xl sticky top-0 z-50 shadow-sm">
         <div className="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
           <div className="flex items-center gap-4">
@@ -143,7 +163,6 @@ export default function SuccessPage() {
       <main className="flex-grow flex items-center justify-center p-6 sm:p-12">
         <div className="max-w-4xl w-full">
           <div className="bg-white rounded-xl p-8 md:p-16 shadow-[0_8px_32px_rgba(3,22,52,0.04)] relative overflow-hidden border border-[#c5c6cf]/10">
-            {/* Decorative school icon */}
             <div className="absolute -top-12 -right-12 opacity-[0.03] pointer-events-none">
               <span
                 className="material-symbols-outlined text-[240px]"
@@ -174,14 +193,13 @@ export default function SuccessPage() {
                 logged into our admissions portal.
               </p>
 
-              {/* ID Card Section - This is what we'll print */}
+              {/* ID Card Section */}
               <div id="id-card" className="w-full max-w-2xl mb-12 print:mb-0">
                 <div className="bg-[#f2f4f7] p-6 rounded-lg border border-[#c5c6cf]/20">
                   <h3 className="font-headline text-xl font-semibold text-[#031634] mb-4">
                     Your Student ID Card
                   </h3>
                   <div className="bg-white rounded-lg shadow-md p-6 flex flex-col sm:flex-row gap-6 items-center sm:items-start">
-                    {/* Avatar placeholder */}
                     <div className="w-28 h-28 bg-gradient-to-br from-[#031634] to-[#1a2b4a] rounded-full flex items-center justify-center text-white shadow-md">
                       <span className="material-symbols-outlined text-5xl">
                         account_circle
@@ -223,7 +241,6 @@ export default function SuccessPage() {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 w-full max-w-lg mt-6 print:hidden">
                 <Link
                   href="/"
@@ -246,7 +263,7 @@ export default function SuccessPage() {
               <div className="mt-10 pt-10 border-t border-[#c5c6cf]/10 w-full">
                 <p className="text-xs text-[#75777e] italic">
                   A confirmation email has been sent to{" "}
-                  {student.parents?.email || "your registered email"}.
+                  {parent?.email || "your registered email"}.
                 </p>
               </div>
             </div>
@@ -254,7 +271,6 @@ export default function SuccessPage() {
         </div>
       </main>
 
-      {/* Footer (same as landing) */}
       <footer className="bg-[#031634] w-full mt-auto border-t border-white/10 print:hidden">
         <div className="w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
@@ -294,7 +310,6 @@ export default function SuccessPage() {
         </div>
       </footer>
 
-      {/* Print styles */}
       <style jsx global>{`
         @media print {
           body * {
@@ -312,12 +327,12 @@ export default function SuccessPage() {
             margin: 0;
             padding: 1rem;
           }
-          .print\\:mb-0 {
+          .print\:mb-0 {
             margin-bottom: 0 !important;
           }
           header,
           footer,
-          .print\\:hidden {
+          .print\:hidden {
             display: none !important;
           }
         }
