@@ -123,42 +123,30 @@ export default function SuccessContent() {
   const handlePrint = () => window.print();
 
   return (
-    <div className="min-h-screen bg-[#F7F9FC] font-body">
-      {/* Same header as before */}
-      <header className="bg-slate-50/80 backdrop-blur-xl sticky top-0 z-50 shadow-sm">
-        <div className="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
-          <div className="flex items-center gap-4">
-            <span className="font-serif text-xl font-bold text-blue-900">
+    <div className="min-h-screen bg-[#F7F9FC] text-[#031634] font-body">
+      <nav className="border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-[#C5A028] rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-sm">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9O6d0Q-nS1YehW8CNxVspyTSNjL1WDER9Sw&s"
+                  alt=""
+                />
+              </span>
+            </div>
+            <span className="font-serif text-xl font-semibold text-[#1A2B4A]">
               Lideta Catholic Cathedral School
             </span>
           </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="#"
-              className="font-sans uppercase tracking-widest text-xs text-slate-600 hover:text-red-700 transition"
-            >
-              Admissions
-            </a>
-            <a
-              href="#"
-              className="font-sans uppercase tracking-widest text-xs text-slate-600 hover:text-red-700 transition"
-            >
-              Academics
-            </a>
-            <a
-              href="#"
-              className="font-sans uppercase tracking-widest text-xs text-slate-600 hover:text-red-700 transition"
-            >
-              Faith
-            </a>
-          </nav>
-          <div className="flex items-center gap-4">
-            <span className="material-symbols-outlined text-[#44474e] cursor-pointer hover:text-[#031634]">
-              language
-            </span>
-          </div>
+          <Link
+            href="/admin/login"
+            className="text-sm text-gray-600 hover:text-[#C5A028] transition"
+          >
+            Admin
+          </Link>
         </div>
-      </header>
+      </nav>
 
       <main className="flex-grow flex items-center justify-center p-6 sm:p-12">
         <div className="max-w-4xl w-full">
@@ -233,7 +221,7 @@ export default function SuccessContent() {
                         </div>
                         <div>
                           <span className="text-[#75777e]">Valid Until:</span>{" "}
-                          2025-08-31
+                          2026-08-31
                         </div>
                       </div>
                     </div>
@@ -259,56 +247,10 @@ export default function SuccessContent() {
                   <span>Print ID Card</span>
                 </button>
               </div>
-
-              <div className="mt-10 pt-10 border-t border-[#c5c6cf]/10 w-full">
-                <p className="text-xs text-[#75777e] italic">
-                  A confirmation email has been sent to{" "}
-                  {parent?.email || "your registered email"}.
-                </p>
-              </div>
             </div>
           </div>
         </div>
       </main>
-
-      <footer className="bg-[#031634] w-full mt-auto border-t border-white/10 print:hidden">
-        <div className="w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center max-w-screen-2xl mx-auto">
-          <div className="mb-8 md:mb-0">
-            <span className="font-serif text-lg text-white block mb-2">
-              Lideta Catholic Cathedral School
-            </span>
-            <p className="font-sans text-sm text-slate-300">
-              © 2024 Lideta Catholic Cathedral School. All Rights Reserved.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8">
-            <a
-              href="#"
-              className="text-slate-400 hover:text-[#eac249] font-sans text-sm transition-colors"
-            >
-              FAQ
-            </a>
-            <a
-              href="#"
-              className="text-slate-400 hover:text-[#eac249] font-sans text-sm transition-colors"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-slate-400 hover:text-[#eac249] font-sans text-sm transition-colors"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#"
-              className="text-slate-400 hover:text-[#eac249] font-sans text-sm transition-colors"
-            >
-              Contact Us
-            </a>
-          </div>
-        </div>
-      </footer>
 
       <style jsx global>{`
         @media print {

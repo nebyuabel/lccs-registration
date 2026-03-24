@@ -188,7 +188,10 @@ export default function AdminDashboard() {
       <header className="sticky top-0 z-40 bg-slate-50/80 backdrop-blur-xl px-8 py-4 flex justify-between items-center shadow-sm">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 bg-[#031634] rounded-lg flex items-center justify-center text-white">
-            <span className="material-symbols-outlined">school</span>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9O6d0Q-nS1YehW8CNxVspyTSNjL1WDER9Sw&s"
+              alt=""
+            />
           </div>
           <h1 className="font-serif text-xl font-bold text-[#031634]">
             Admin Dashboard
@@ -432,44 +435,6 @@ export default function AdminDashboard() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#031634] w-full mt-auto border-t border-white/10">
-        <div className="w-full px-8 py-12 flex flex-col md:flex-row justify-between items-center max-w-screen-2xl mx-auto">
-          <div className="mb-8 md:mb-0">
-            <span className="font-serif text-lg text-white block mb-2">
-              Lideta Catholic Cathedral School
-            </span>
-            <p className="font-sans text-sm text-slate-300">
-              © 2024 Lideta Catholic Cathedral School. All Rights Reserved.
-            </p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8">
-            <a
-              href="#"
-              className="text-slate-400 hover:text-[#eac249] font-sans text-sm transition-colors"
-            >
-              FAQ
-            </a>
-            <a
-              href="#"
-              className="text-slate-400 hover:text-[#eac249] font-sans text-sm transition-colors"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-slate-400 hover:text-[#eac249] font-sans text-sm transition-colors"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#"
-              className="text-slate-400 hover:text-[#eac249] font-sans text-sm transition-colors"
-            >
-              Contact Us
-            </a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

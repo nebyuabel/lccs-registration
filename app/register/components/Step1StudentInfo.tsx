@@ -7,7 +7,7 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
   } = useFormContext();
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-[#031634]/50">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Full Name */}
         <div className="space-y-2 col-span-full">
@@ -17,8 +17,9 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
           </label>
           <input
             {...register("full_name")}
-            className="w-full bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white transition-all placeholder:text-[#75777e]/50"
+            className="w-full bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white transition-all placeholder:text-[#031634]/50"
             placeholder="Enter complete legal name"
+            required
           />
           {errors.full_name && (
             <p className="text-red-500 text-xs">
@@ -37,8 +38,9 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
           </label>
           <input
             type="date"
+            required
             {...register("date_of_birth")}
-            className="w-full bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
+            className="w-full bg-[#f2f4f7] text-[#031634]/50  border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
           />
           {errors.date_of_birth && (
             <p className="text-red-500 text-xs">
@@ -61,7 +63,9 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
                 {...register("gender")}
                 className="text-[#af2b3e] focus:ring-[#af2b3e] w-4 h-4"
               />
-              <span className="text-sm font-medium">Male</span>
+              <span className="text-sm text-[#031634]/50 font-medium">
+                Male
+              </span>
             </label>
             <label className="flex-1 flex items-center justify-center gap-2 cursor-pointer bg-[#f2f4f7] hover:bg-[#e6e8eb] py-3 rounded-lg transition-colors border border-transparent has-[:checked]:border-[#af2b3e]/20 has-[:checked]:bg-[#af2b3e]/5">
               <input
@@ -70,7 +74,9 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
                 {...register("gender")}
                 className="text-[#af2b3e] focus:ring-[#af2b3e] w-4 h-4"
               />
-              <span className="text-sm font-medium">Female</span>
+              <span className="text-sm text-[#031634]/50 font-medium">
+                Female
+              </span>
             </label>
           </div>
           {errors.gender && (
@@ -94,24 +100,27 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
             <div className="relative flex-grow">
               <select
                 {...register("grade_applying_for", { valueAsNumber: true })}
-                className="w-full appearance-none bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
+                required
+                className="w-full text-[#031634]/50 appearance-none bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
               >
-                <option value={9}>Grade 9</option>
-                <option value={10}>Grade 10</option>
-                <option value={11}>Grade 11</option>
-                <option value={12}>Grade 12</option>
+                <option className="text-[#031634]/50" value={9}>
+                  Grade 9
+                </option>
+                <option className="text-[#031634]/50" value={10}>
+                  Grade 10
+                </option>
+                <option className="text-[#031634]/50" value={11}>
+                  Grade 11
+                </option>
+                <option className="text-[#031634]/50" value={12}>
+                  Grade 12
+                </option>
               </select>
               <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none">
                 <span className="material-symbols-outlined text-[#75777e]">
                   expand_more
                 </span>
               </div>
-            </div>
-            <div className="flex items-center gap-3 px-6 bg-green-50 rounded-lg border border-green-100/50 min-w-fit">
-              <div className="w-2 h-2 rounded-full bg-green-600 animate-pulse"></div>
-              <span className="text-xs font-bold text-green-800">
-                Grade 9 – 23 seats left
-              </span>
             </div>
           </div>
           {errors.grade_applying_for && (

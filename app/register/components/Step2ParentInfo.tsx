@@ -22,7 +22,7 @@ export function Step2ParentInfo({
           </label>
           <input
             {...register("father_name")}
-            className="w-full bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
+            className="w-full text-[#031634]/50 bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
             placeholder="Full name"
           />
         </div>
@@ -34,7 +34,7 @@ export function Step2ParentInfo({
           </label>
           <input
             {...register("mother_name")}
-            className="w-full bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
+            className="w-full text-[#031634]/50 bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
             placeholder="Full name"
           />
         </div>
@@ -46,8 +46,9 @@ export function Step2ParentInfo({
           </label>
           <input
             {...register("phone")}
-            className="w-full bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
+            className="w-full bg-[#f2f4f7] text-[#031634]/50 border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
             placeholder="+251 9XX XXX XXX"
+            required
           />
           {errors.phone && (
             <p className="text-red-500 text-xs">
@@ -64,7 +65,7 @@ export function Step2ParentInfo({
           <input
             {...register("email")}
             type="email"
-            className="w-full bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
+            className="w-full text-[#031634]/50 bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
             placeholder="parent@example.com"
           />
           {errors.email && (
@@ -82,7 +83,7 @@ export function Step2ParentInfo({
           <textarea
             {...register("address")}
             rows={3}
-            className="w-full bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
+            className="w-full text-[#031634]/50 bg-[#f2f4f7] border-none rounded-lg py-4 px-5 focus:ring-2 focus:ring-[#cca72f] focus:bg-white"
             placeholder="Street, City, Sub-city"
           />
         </div>

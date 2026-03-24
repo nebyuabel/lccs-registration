@@ -12,7 +12,7 @@ export function Step4Review({
   onPrev: () => void;
 }) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-[#031634]">
       <div className="space-y-4">
         <h3 className="text-lg font-semibold text-[#031634]">
           Student Information

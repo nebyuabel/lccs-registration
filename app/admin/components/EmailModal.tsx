@@ -63,7 +63,7 @@ export default function EmailModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed text-[#031634]/50 inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
         <h3 className="font-headline text-xl font-bold text-[#031634] mb-4">
           Update Application Status

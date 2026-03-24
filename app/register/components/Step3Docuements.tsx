@@ -24,7 +24,7 @@ export function Step3Documents({
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 text-[#031634]/50">
       <div className="space-y-4">
         <label className="font-sans uppercase tracking-widest text-[0.7rem] font-bold text-[#44474e] flex items-center gap-2">
           <span className="material-symbols-outlined text-sm">upload_file</span>

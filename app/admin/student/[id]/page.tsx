@@ -99,7 +99,7 @@ export default function StudentDetail() {
   const parent = student.parents?.[0] || null;
 
   return (
-    <div className="min-h-screen bg-[#F7F9FC]">
+    <div className="min-h-screen text-[#031634]/50 bg-[#F7F9FC]">
       {/* Header */}
       <header className="sticky top-0 z-40 bg-slate-50/80 backdrop-blur-xl px-8 py-4 flex justify-between items-center shadow-sm">
         <div className="flex items-center gap-4">
@@ -110,7 +110,10 @@ export default function StudentDetail() {
             <span className="material-symbols-outlined">arrow_back</span>
           </Link>
           <div className="w-10 h-10 bg-[#031634] rounded-lg flex items-center justify-center text-white">
-            <span className="material-symbols-outlined">school</span>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9O6d0Q-nS1YehW8CNxVspyTSNjL1WDER9Sw&s"
+              alt=""
+            />
           </div>
           <h1 className="font-serif text-xl font-bold text-[#031634]">
             Student Details

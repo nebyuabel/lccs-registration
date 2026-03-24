@@ -115,52 +115,39 @@ export default function RegisterPage() {
     }
   };
 
+  const {
+    formState: { errors },
+  } = methods;
+  console.log("Form errors:", errors);
+
   return (
     <div className="min-h-screen bg-[#F7F9FC] flex flex-col">
       {/* Navbar – copy from your landing page */}
-      <nav className="bg-slate-50/80 backdrop-blur-xl sticky top-0 z-50 shadow-sm">
-        <div className="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#031634] rounded-lg flex items-center justify-center text-white">
-              <span className="material-symbols-outlined">school</span>
-            </div>
-            <h1 className="font-serif text-xl font-bold text-[#031634]">
-              Lideta Catholic Cathedral School
-            </h1>
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#"
-                className="font-sans uppercase tracking-widest text-xs text-slate-600 hover:text-[#af2b3e] transition"
-              >
-                Admissions
-              </a>
-              <a
-                href="#"
-                className="font-sans uppercase tracking-widest text-xs text-slate-600 hover:text-[#af2b3e] transition"
-              >
-                Academics
-              </a>
-              <a
-                href="#"
-                className="font-sans uppercase tracking-widest text-xs text-slate-600 hover:text-[#af2b3e] transition"
-              >
-                Faith
-              </a>
-            </div>
-            <div className="h-6 w-px bg-[#c5c6cf]/30 mx-2"></div>
-            <button className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#e6e8eb] hover:bg-[#e0e3e6] transition">
-              <span className="material-symbols-outlined text-sm">
-                language
+      <nav className="border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-[#C5A028] rounded-full flex items-center justify-center">
+              <span className="text-white font-bold text-sm">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9O6d0Q-nS1YehW8CNxVspyTSNjL1WDER9Sw&s"
+                  alt=""
+                />
               </span>
-              <span className="text-xs font-bold uppercase">EN / AM</span>
-            </button>
+            </div>
+            <span className="font-serif text-xl font-semibold text-[#1A2B4A]">
+              Lideta Catholic Cathedral School
+            </span>
           </div>
+          <Link
+            href="/admin/login"
+            className="text-sm text-gray-600 hover:text-[#C5A028] transition"
+          >
+            Admin
+          </Link>
         </div>
       </nav>
 
-      <main className="flex-grow flex flex-col items-center justify-start pt-12 pb-24 px-4 sm:px-6">
+      <main className="grow flex flex-col items-center justify-start pt-12 pb-24 px-4 sm:px-6">
         <div className="w-full max-w-3xl mb-12">
           <div className="text-center mb-10">
             <span className="font-sans uppercase tracking-[0.2em] text-[0.65rem] text-[#af2b3e] font-bold mb-2 block">
@@ -252,34 +239,9 @@ export default function RegisterPage() {
               Lideta Catholic Cathedral School
             </span>
             <p className="font-sans text-sm text-slate-300">
-              © 2024 Lideta Catholic Cathedral School. All Rights Reserved.
+              © {new Date().getFullYear()} Lideta Catholic Cathedral School. All
+              Rights Reserved.
             </p>
-          </div>
-          <div className="flex gap-8">
-            <a
-              href="#"
-              className="font-sans text-sm text-slate-400 hover:text-[#eac249] transition-colors"
-            >
-              FAQ
-            </a>
-            <a
-              href="#"
-              className="font-sans text-sm text-slate-400 hover:text-[#eac249] transition-colors"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="font-sans text-sm text-slate-400 hover:text-[#eac249] transition-colors"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#"
-              className="font-sans text-sm text-slate-400 hover:text-[#eac249] transition-colors"
-            >
-              Contact Us
-            </a>
           </div>
         </div>
       </footer>
