@@ -32,9 +32,13 @@ export default function EmailModal({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: student.id, status }),
       });
-      if (!resStatus.ok) throw new Error("Failed to update status");
+      if (!resStatus.ok) {
+        const errorData = await resStatus.json();
+        console.error("Status update error:", errorData);
+        throw new Error(errorData.error || "Failed to update status");
+      }
 
-      // Send email
+      // Send email using student data
       const resEmail = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -45,7 +49,18 @@ export default function EmailModal({
           message,
         }),
       });
-      if (!resEmail.ok) throw new Error("Failed to send email");
+
+      if (!resEmail.ok) {
+        const errorData = await resEmail.json();
+        throw new Error(errorData.error || "Failed to send email");
+      }
+
+      const result = await resEmail.json();
+      if (result.previewUrl) {
+        alert(`Email sent to test inbox. View it here: ${result.previewUrl}`);
+      } else {
+        alert("Email sent successfully!");
+      }
 
       // Update local state
       onStatusChange(student.id, status);
@@ -58,12 +73,10 @@ export default function EmailModal({
     }
   };
 
-  console.log("Sending to email:", student.email);
-
   if (!isOpen) return null;
 
   return (
-    <div className="fixed text-[#031634]/50 inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
         <h3 className="font-headline text-xl font-bold text-[#031634] mb-4">
           Update Application Status
@@ -79,7 +92,7 @@ export default function EmailModal({
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value)}
-              className="w-full bg-[#f2f4f7] border-none rounded-lg py-2 px-3 focus:ring-2 focus:ring-[#cca72f]"
+              className="w-full text-black bg-[#f2f4f7] border-none rounded-lg py-2 px-3 focus:ring-2 focus:ring-[#cca72f]"
             >
               <option value="approved">Approve</option>
               <option value="rejected">Reject</option>
