@@ -14,13 +14,13 @@ interface Student {
   grade_applying_for: number;
   status: string;
   created_at: string;
-  parents?: {
+  parents?: Array<{
     father_name: string | null;
     mother_name: string | null;
     phone: string;
     email: string;
     address: string | null;
-  } | null;
+  }>;
 }
 
 export default function AdminDashboard() {
@@ -147,8 +147,8 @@ export default function AdminDashboard() {
       s.grade_applying_for,
       s.status,
       new Date(s.created_at).toLocaleDateString(),
-      s.parents?.phone || "",
-      s.parents?.email || "",
+      s.parents?.[0]?.phone || "",
+      s.parents?.[0]?.email || "",
     ]);
     const csvContent = [headers, ...rows]
       .map((row) => row.join(","))

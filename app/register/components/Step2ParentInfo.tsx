@@ -16,7 +16,7 @@ export function Step2ParentInfo({
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="space-y-2">
-          <label className="font-sans uppercase tracking-widest text-[0.7rem] font-bold text-[#44474e] flex items-center gap-2">
+          <label className="font-sans uppercase tracking-widest text-[0.7rem] font-bold text-[#5f6061] flex items-center gap-2">
             <span className="material-symbols-outlined text-sm">male</span>
             Father's Name (optional)
           </label>
@@ -28,7 +28,7 @@ export function Step2ParentInfo({
         </div>
 
         <div className="space-y-2">
-          <label className="font-sans uppercase tracking-widest text-[0.7rem] font-bold text-[#44474e] flex items-center gap-2">
+          <label className="font-sans uppercase tracking-widest text-[0.7rem] font-bold text-[#5f6061] flex items-center gap-2">
             <span className="material-symbols-outlined text-sm">female</span>
             Mother's Name (optional)
           </label>
@@ -42,7 +42,7 @@ export function Step2ParentInfo({
         <div className="space-y-2">
           <label className="font-sans uppercase tracking-widest text-[0.7rem] font-bold text-[#44474e] flex items-center gap-2">
             <span className="material-symbols-outlined text-sm">phone</span>
-            Phone Number
+            Phone Number*
           </label>
           <input
             {...register("phone")}
@@ -60,7 +60,7 @@ export function Step2ParentInfo({
         <div className="space-y-2">
           <label className="font-sans uppercase tracking-widest text-[0.7rem] font-bold text-[#44474e] flex items-center gap-2">
             <span className="material-symbols-outlined text-sm">mail</span>
-            Email Address
+            Email Address*
           </label>
           <input
             {...register("email")}

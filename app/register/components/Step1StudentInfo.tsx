@@ -13,7 +13,7 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
         <div className="space-y-2 col-span-full">
           <label className="font-sans uppercase tracking-widest text-[0.7rem] font-bold text-[#44474e] flex items-center gap-2">
             <span className="material-symbols-outlined text-sm">person</span>
-            Student's Full Name
+            Student's Full Name*
           </label>
           <input
             {...register("full_name")}
@@ -34,7 +34,7 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
             <span className="material-symbols-outlined text-sm">
               calendar_today
             </span>
-            Date of Birth
+            Date of Birth*
           </label>
           <input
             type="date"
@@ -53,7 +53,7 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
         <div className="space-y-2">
           <label className="font-sans uppercase tracking-widest text-[0.7rem] font-bold text-[#44474e] flex items-center gap-2">
             <span className="material-symbols-outlined text-sm">wc</span>
-            Gender
+            Gender*
           </label>
           <div className="flex gap-4 h-[56px] items-center">
             <label className="flex-1 flex items-center justify-center gap-2 cursor-pointer bg-[#f2f4f7] hover:bg-[#e6e8eb] py-3 rounded-lg transition-colors border border-transparent has-[:checked]:border-[#af2b3e]/20 has-[:checked]:bg-[#af2b3e]/5">
@@ -93,7 +93,7 @@ export function Step1StudentInfo({ onNext }: { onNext: () => void }) {
               <span className="material-symbols-outlined text-sm">
                 grid_view
               </span>
-              Grade Applying For
+              Grade Applying For*
             </label>
           </div>
           <div className="flex flex-col md:flex-row gap-4 items-stretch">
